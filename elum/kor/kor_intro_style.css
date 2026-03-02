@@ -1,5 +1,5 @@
 *{box-sizing: border-box;}
-body{margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+body{margin: 0; font-family: font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;}
 img{max-width: 100%; display:block;}
 
 .container{
@@ -9,51 +9,107 @@ img{max-width: 100%; display:block;}
 
 .section{padding: 72px 0;}
 
+/* INTRO 전체 정렬 (텍스트/이미지 포함) */
+.intro{
+    display: grid;
+    gap: 40px;
+    justify-self: center;/* INTRO 전체 정렬 (텍스트/이미지 포함) */
+    text-align: center;/* 텍스트 가운데 */
+}
+
+.intro__illust{
+  display: flex;
+  justify-content: center;
+}
+
+/* 일러스트 크기 제어(원본이 커도 안정적으로) */
+.intro__illust img{
+  width: min(520px, 100%);
+  height: auto;
+  display: block;
+}
+/* 텍스트 덩어리 폭 제한: 피그마 느낌(줄길이 통제) */
+.intro__text{
+  max-width: 980px;
+  padding: 25px;
+}
+/* h2 = 56 */
+.intro__text h2{
+  margin: 0 0 18px;
+  font-size: 56px;
+  font-weight: 700;      /* 필요하면 800으로 */
+  line-height: 1.15;
+  color: #202020;        /* 카드 타이틀과 톤 맞추기 */
+}
+/* 첫 문장(32) : "KPOP, K드라마..." */
+.intro__text p:first-of-type{
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #4C4C4C;
+}
+
+/* 설명(24) : 두 번째 p */
+.intro__text p:nth-of-type(2){
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #4C4C4C;
+}
+
 .cards{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 304px);
+    gap: 40px;
     justify-content: center;
 }
 
 .card{
-    width: 304px;
-    min-height: 563px;
-    background:#F9F9F9;
-    border-radius:25px;
-    box-shadow: 3px 6px 8px rgba(0,0,0,.15);
-    padding: 28px;
-    box-sizing: border-box;
+  width: 304px;
+  min-height: 563px;
+  background: #F9F9F9;
+  border-radius: 25px;
+  box-shadow: 3px 6px 8px rgba(0,0,0,.15);
+  box-sizing: border-box;
+  overflow: hidden; /* 카드 라운드 안쪽 정리 */
 }
 
-.card_thumb {
+.card__thumb {
     width: 228px;
     height:254px;
     border-radius: 25px;
     overflow:hidden;
-    margin: 0 auto 22px;
+    margin: 28px auto 22px; /* 카드 안에서 가운데 + 아래 간격 */
 }
 
-.card_thumb img{
+.card__thumb img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    object-fit: cover; /* 프레임 꽉 채움 */
+    display: block; /* inline 여백 제거 */
 }
 
 .card__body{
-  padding:28px;
+  padding:0 28px 28px; /* 위는 thumb가 이미 만들어줬으니 0 */
+  text-align: center;
 }
 
 .card__title{
-  margin:0 0 12px;
-  font-size:28px;
-  line-height:1.2;
+  margin: 0 0 16px;
+  font-size: 32px;   /* 요청: 32 */
+  font-weight: 700;  /* bold */
+  line-height: 1.25;
+  color: #202020;  /* h3 색상 */
+  letter-spacing: -0.3px; /* 자간 조절*/
 }
 
 .card__desc{
-  margin:0;
-  font-size:18px;
-  line-height:1.6;
-  color:#444;
+  margin: 0;
+  font-size: 24px;   /* 요청: 24 */
+  font-weight: 400;  /* regular */
+  line-height: 1.6;
+  color: #4c4c4c;  /* p 색상 */
+  letter-spacing: -0.2px;/* 자간 조절*/
 }
