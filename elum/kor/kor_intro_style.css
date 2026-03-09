@@ -11,17 +11,17 @@ img{max-width: 100%; display:block;}
 
  /* 히어로 위아래 여백(원하면 조절) */
 .hero{
-  padding: 72px 0;
+  padding: clamp(20px, 3vw, 40px);
 }
 
 .hero__stage{
   position: relative;
   width: min(1400px, calc(100% - 40px));  /* 화면 작으면 줄고, 크면 1400 고정 */
   aspect-ratio: 1400 / 569;         /* ⭐ 비율 유지 */
-  margin: 0 auto;
   overflow: hidden;             /* 배너 밖으로 나가는 요소 자르기 */
-  height: clamp(420px, 72vh, 569px);
+  min-height: 320px;
   padding: clamp(28px, 3vw, 56px);
+  margin: 0 auto;
 }
 
 
@@ -36,16 +36,13 @@ img{max-width: 100%; display:block;}
 
 /* 기와집(앞에 뜨는 오브젝트) */
 .hero__bg2{
-   position: absolute;
+  position: absolute;
   right: 0;
   bottom: 0;
   width: min(729px, 55%);  /* 큰 화면에선 729, 작은 화면에선 비율 */
   height: auto;
   object-fit: contain;
   z-index: 1;
-  width: min(729px, 55%);
-  max-width: 729px;
-  min-width: 460px; /* 너무 작아지는 거 방지(원하면 조절) */
   
 }
 
@@ -56,12 +53,12 @@ img{max-width: 100%; display:block;}
   height: 100%;
   display: flex;
   align-items: flex-start;      /* 세로 가운데(원하면 flex-start로) */
-  padding: 42px;
+  padding: clamp(20px, 3vw, 42px);
   box-sizing: border-box;
 }
 
 .hero__content{
-  max-width: 520px;             /* 텍스트 줄 길이 제한(원하면 조절) */
+  max-width: 760px;             /* 텍스트 줄 길이 제한(원하면 조절) */
   color: #fff;
 }
 
@@ -69,7 +66,7 @@ img{max-width: 100%; display:block;}
 /* 1. 기관 설명 */
 .hero__eyebrow{
   margin: 0 0 10px;
-  font-size: clamp(18px, 1.2vw, 22px);
+  font-size: clamp(14px, 1.1vw, 20px);
   font-weight: 600;
   opacity: 0.85;
   color: #fff;
@@ -80,12 +77,12 @@ img{max-width: 100%; display:block;}
 .hero__badge{
   display: inline-block;
   margin: 0 0 18px;
-  padding: 10px 56px;
+  padding: clamp(8px, 0.7vw, 12px) clamp(28px, 2.4vw, 42px);
   border-radius: 999px;
   background: #f3d34a;
   color: #202020;
-  font-size: clamp(22px, 1.6vw, 32px);
-  font-weight: 600;
+  font-size: clamp(18px, 1.8vw, 32px);
+  font-weight: 700;
   
 
 }
@@ -93,25 +90,27 @@ img{max-width: 100%; display:block;}
 /* 3. 메인 타이틀 */
 .hero__title{
   margin: 0 0 16px;
-  font-size: clamp(44px, 5vw, 92px);
+  font-size: clamp(44px, 5vw, 84px);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.08;
   letter-spacing: -0.04em;
   color: #fff;
+  white-space: nowrap;
  
 }
 
 /* 4. 설명 */
 .hero__desc{
- margin: 0;
-  max-width: 520px;                  /* 줄 길이 제어 */
-  font-size: clamp(20px, 1.8vw, 26px);
+  margin: 0;
+  max-width: clamp(22ch, 40vw, 30ch);             /* 줄 길이 제어 */
+  font-size: clamp(18px, 2vw, 28px);
   font-weight: 600;
   line-height: 1.45;
   color: rgba(255,255,255,.88);
 }
 
 .hero__title span{
+  white-space: nowrap;
   color: #f3d34a;
 }
 
